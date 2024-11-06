@@ -8,17 +8,21 @@ client = TestClient(app)
 
 
 def test_ocr_jpg():
-    do_ocr_img_path("./data/example.jpg")
+    _test_ocr("./data/example.jpg")
 
 
 def test_ocr_png():
-    do_ocr_img_path("./data/example.png")
+    _test_ocr("./data/example.png")
 
 
-def do_ocr_img_path(img_path):
+def _test_ocr(img_path):
     with open(img_path, "rb") as f:
         data = f.read()
     encoded = base64.b64encode(data).decode()
     payload = {"filedata": encoded}
-    resp = client.post("/ocr", data=payload)
-    assert resp.status_code == 200
+    resp = client.post("/ocr", data=payload).json()
+    texts = [text for _, (text, _) in resp["ocr_result"][0]]
+    assert texts[-2:] == [
+        "P<UTOERIKSSON<<ANNA<MARIA<<<<<<<<<<<<<<<<<<<",
+        "L898902C36UT07408122F1204159ZE184226B<<<<<10",
+    ]

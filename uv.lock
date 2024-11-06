@@ -1652,6 +1652,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "fastapi" },
+    { name = "numpy" },
     { name = "paddleocr" },
     { name = "paddlepaddle" },
     { name = "pytest" },
@@ -1672,6 +1673,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "fastapi", specifier = ">=0.115.4" },
+    { name = "numpy", specifier = ">=1.26.4" },
     { name = "paddleocr", specifier = ">=2.9.1" },
     { name = "paddlepaddle", specifier = ">=2.6.2" },
     { name = "pytest", specifier = ">=8.3.3" },
