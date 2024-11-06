@@ -13,6 +13,9 @@ OCR_MODEL = PaddleOCR(lang="fr", use_angle_cls=True)
 
 app = FastAPI()
 
+with open("./data/example.txt", "r") as f:
+    example_base64_image = f.read()
+
 
 def do_ocr(image: Union[Image.Image, np.ndarray]):
     """Perform OCR on the given image."""
@@ -20,7 +23,12 @@ def do_ocr(image: Union[Image.Image, np.ndarray]):
 
 
 @app.post("/ocr")
-async def ocr_endpoint(filedata: str = Form(...)):
+async def ocr_endpoint(
+    filedata: str = Form(
+        default=example_base64_image,
+        description="Base64 encoded image",
+    ),
+):
     try:
         img_recovered = decode_b64(filedata)
         img = Image.open(io.BytesIO(img_recovered)).convert("RGB")
