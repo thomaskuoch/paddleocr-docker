@@ -6,5 +6,5 @@ start:
 
 test: 
 	docker build -t paddleocr-docker-test .
-	docker run --rm --entrypoint /bin/sh paddleocr-docker-test -c "uv run pytest /app/test.py"
+	docker run --rm --entrypoint /bin/sh paddleocr-docker-test -c "uv run pytest ./test.py"
 	docker rmi paddleocr-docker-test
