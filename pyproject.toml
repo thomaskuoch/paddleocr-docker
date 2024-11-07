@@ -1,6 +1,6 @@
 [project]
 name = "paddleocr-docker"
-version = "0.1.0"
+version = "0.2.0"
 description = "Building a docker image that serves PaddleOCR"
 readme = "README.md"
 requires-python = ">=3.10"

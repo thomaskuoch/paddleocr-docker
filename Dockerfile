@@ -30,7 +30,7 @@ COPY uv.lock pyproject.toml ./
 RUN uv sync --frozen --no-dev
 
 # Run PaddleOCR setup using a single command
-RUN uv run python -c "from paddleocr import PaddleOCR; PaddleOCR(lang='fr', use_angle_cls=True)"
+RUN uv run python -c "from paddleocr import PaddleOCR; PaddleOCR(lang='fr', use_angle_cls=True, det_db_score_mode='slow')"
 
 # Copy the remaining application code
 COPY . .

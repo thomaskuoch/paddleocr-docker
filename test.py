@@ -3,6 +3,7 @@ import base64
 from fastapi.testclient import TestClient
 
 from main import app
+from rotate import infer_angle
 
 client = TestClient(app)
 
@@ -13,6 +14,15 @@ def test_ocr_jpg():
 
 def test_ocr_png():
     _test_ocr("./data/example.png")
+
+
+def test_ocr_rotated():
+    _test_ocr("./data/example_rotated.jpg")
+
+
+def test_infer_angle():
+    angle = infer_angle("./data/example_rotated.jpg")
+    assert abs(angle) == 90
 
 
 def _test_ocr(img_path):
