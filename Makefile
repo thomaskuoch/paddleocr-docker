@@ -13,7 +13,7 @@ DOCKER_USER := thomaskuoch
 
 # Build the Docker image with the specified version
 build:
-	docker build -t $(IMAGE_NAME):$(VERSION) .
+	docker build --platform="linux/amd64" -t $(IMAGE_NAME):$(VERSION) .
 
 # Start the container
 start:
