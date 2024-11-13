@@ -15,11 +15,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Download and install uv in one step, then clean up the installer
-ADD https://astral.sh/uv/install.sh /uv-installer.sh
+ADD https://astral.sh/uv/0.5.1/install.sh /uv-installer.sh
 RUN sh /uv-installer.sh && rm /uv-installer.sh
 
 # Update the PATH environment variable
-ENV PATH="/root/.cargo/bin/:$PATH"
+ENV PATH="/root/.local/bin/:$PATH"
 
 # Set the working directory
 WORKDIR /app
