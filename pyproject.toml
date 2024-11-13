@@ -1,11 +1,12 @@
 [project]
 name = "paddleocr-docker"
-version = "0.2.3"
+version = "0.2.4"
 description = "Building a docker image that serves PaddleOCR"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "fastapi>=0.115.4",
+    "loguru>=0.7.2",
     "numpy>=1.26.4",
     "paddleocr>=2.9.1",
     "paddlepaddle>=2.6.2",
