@@ -25,12 +25,12 @@ ENV PATH="/root/.local/bin/:$PATH"
 WORKDIR /app
 
 # Copy only the necessary files for dependency installation
-COPY uv.lock pyproject.toml ./
+COPY uv.lock pyproject.toml download.py ./
 # Install dependencies using uv
 RUN uv sync --frozen --no-dev
 
-# Run PaddleOCR setup using a single command
-RUN uv run python -c "from paddleocr import PaddleOCR; PaddleOCR(lang='fr', use_angle_cls=True, det_db_score_mode='slow')"
+# Download PaddleOCR model
+RUN uv run python download.py
 
 # Copy the remaining application code
 COPY . .
